@@ -1,82 +1,71 @@
-const inputBox = document.querySelector('.input-box');
-const numberButtons = document.querySelectorAll('.number');
-const operatorButtons = document.querySelectorAll('.operator');
-const clearButton = document.querySelector('.clear');
-const calculateButton = document.querySelector('.calculate');
+<!DOCTYPE html>
 
-let currentValue = 0;
-let currentOperator = null;
-let shouldResetInput = false;
+<html lang="en">
 
-function resetInput() {
-  inputBox.value = '';
-  shouldResetInput = false;
-}
+<head>
 
-function updateInput(value) {
-  if (shouldResetInput) {
-    resetInput();
-  }
+<meta charset="UTF-8">
 
-  inputBox.value += value;
-}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-function handleNumberButtonClick(e) {
-  const value = e.target.value;
-  updateInput(value);
-}
+<link rel="stylesheet" href="calculator.css">
 
-function handleOperatorButtonClick(e) {
-  const operator = e.target.value;
+<title>Beautiful Calculator</title>
 
-  if (currentOperator !== null) {
-    const operand = parseFloat(inputBox.value);
-    currentValue = evaluate(currentValue, currentOperator, operand);
-    inputBox.value = currentValue;
-  } else {
-    currentValue = parseFloat(inputBox.value);
-  }
+</head>
 
-  currentOperator = operator;
-  shouldResetInput = true;
-}
+<body>
 
-function handleClearButtonClick() {
-  currentValue = 0;
-  currentOperator = null;
-  resetInput();
-}
+<div class="calculator">
 
-function handleCalculateButtonClick() {
-  const operand = parseFloat(inputBox.value);
-  currentValue = evaluate(currentValue, currentOperator, operand);
-  inputBox.value = currentValue;
-  currentOperator = null;
-  shouldResetInput = true;
-}
+<input class="calculator-display" type="text" readonly>
 
-function evaluate(a, operator, b) {
-  switch (operator) {
-    case '+':
-      return a + b;
-    case '-':
-      return a - b;
-    case '*':
-      return a * b;
-    case '/':
-      return a / b;
-    default:
-      return b;
-  }
-}
+<div class="calculator-buttons">
 
-numberButtons.forEach(button => {
-  button.addEventListener('click', handleNumberButtonClick);
-});
+<button data-clear>AC</button>
 
-operatorButtons.forEach(button => {
-  button.addEventListener('click', handleOperatorButtonClick);
-});
+<button data-number>7</button>
 
-clearButton.addEventListener('click', handleClearButtonClick);
-calculateButton.addEventListener('click', handleCalculateButtonClick);
+<button data-number>8</button>
+
+<button data-number>9</button>
+
+<button data-operator data-operator-type="divide">/</button>
+
+<button data-number>4</button>
+
+<button data-number>5</button>
+
+<button data-number>6</button>
+
+<button data-operator data-operator-type="multiply">*</button>
+
+<button data-number>1</button>
+
+<button data-number>2</button>
+
+<button data-number>3</button>
+
+<button data-operator data-operator-type="subtract">-</button>
+
+<button data-number>0</button>
+
+<button data-number>.</button>
+
+<button data-equals>=</button>
+
+<button data-operator data-operator-type="add">+</button>
+
+</div>
+
+</div>
+
+<script src="calculator.js"></script>
+
+</body>
+
+</html>
+
+ 
+
+ 
