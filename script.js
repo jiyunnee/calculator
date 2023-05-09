@@ -1,21 +1,16 @@
-let result = document.getElementById("result");
-
-function appendNumber(number) {
-  result.value += number;
+function appendValue(value) {
+    document.getElementById('display').value += value;
 }
 
-function appendOperator(operator) {
-  result.value += operator;
+function calculate() {
+    try {
+        let result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+    } catch (error) {
+        document.getElementById('display').value = 'Error';
+    }
 }
 
-function calculateResult() {
-  try {
-    result.value = eval(result.value);
-  } catch (error) {
-    result.value = "Error";
-  }
-}
-
-function clearResult() {
-  result.value = "";
+function clearDisplay() {
+    document.getElementById('display').value = '';
 }
